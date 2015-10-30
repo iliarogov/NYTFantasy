@@ -8,18 +8,18 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello, komrades");
-
-  resp, err := http.Get("http://api.nytimes.com/svc/mostpopular/v2/mostviewed/all-sections/1.json?api-key=e05d2e271ed14eeea49b2b3ef191f51b:15:69644955")
+  resp, err := http.Get("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=Hillary+Clinton&begin_date=20151027&end_date=20151029&api-key=0abd2e8ce8d0988d7eda50ba18f19c82:14:73341622")
   if err != nil {
     // handle error
   }
   defer resp.Body.Close()
   body, err := ioutil.ReadAll(resp.Body)
 
-//  var target stuff;
   data := map[string]interface{}{}
   json.Unmarshal(body, &data);
-  fmt.Println(data["results"]);
-  fmt.Println(len(data));
+
+  response := data["response"].(map[string]interface{});
+  docs := response["docs"].([]interface{});
+
+  fmt.Println(len(docs));
 }
