@@ -9,12 +9,19 @@
   </div>
   
   <div class="jumbotron col-sm-9">
-    <div class="col-sm-6 col-md-4" ng-repeat="todaysWord in main.todaysWords">
-      <div class="row-group">
-          <span class="col-md-4">{{todaysWord.word}}</span>
-          <span class="col-md-4">{{todaysWord.score}}</span>
+      <div class="col-md-4">
+        <table class="table">
+            <thead>
+              <tr>
+                <th>Word</th>
+                <th>Score</th>
+              </tr>
+              <tr ng-repeat="todaysWord in main.todaysWords">
+                  <td class="{{todaysWord.rank}}">{{todaysWord.word}}</td>
+                  <td class="{{todaysWord.rank}}">{{todaysWord.score}}</td>
+              </tr>
+            </thead>
+        </table>
       </div>
-    </div>
   </div>
-
 </div>
