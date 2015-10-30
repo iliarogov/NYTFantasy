@@ -1,3 +1,6 @@
+drop database if exists nyt_fantasy;
+create database nyt_fantasy;
+
 drop table if exists user;
 CREATE TABLE user (
   user_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -8,7 +11,7 @@ CREATE TABLE user (
 drop table if exists ngram;
 CREATE TABLE ngram (
   ngram_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  email VARCHAR(50),
+  ngram VARCHAR(50),
   last_upd_ts TIMESTAMP
 );
 
