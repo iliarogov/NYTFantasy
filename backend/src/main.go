@@ -31,16 +31,16 @@ func main() {
 }
 
 func foo(w http.ResponseWriter, r *http.Request) {
-  profile := Profile{"Alex", []string{"snowboarding", "programming"}}
+  param := r.URL.Query().Get("param")
 
-  js, err := json.Marshal(profile)
-  if err != nil {
-    http.Error(w, err.Error(), http.StatusInternalServerError)
-    return
-  }
+  decoder := json.NewDecoder(r.Body)
+  var t map[string]interface{}
+  decoder.Decode(&t)
+  t["param"] = param
+  response, _ := json.Marshal(t)
+  w.Write(response)
 
   w.Header().Set("Content-Type", "application/json")
-  w.Write(js)
 }
 
 type Profile struct {
