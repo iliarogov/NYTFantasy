@@ -7,6 +7,7 @@ import (
   "encoding/json"
 )
 
+
 func main() {
 //  resp, err := http.Get("http://api.nytimes.com/svc/search/v2/articlesearch.json?q=Hillary+Clinton&begin_date=20151027&end_date=20151029&api-key=0abd2e8ce8d0988d7eda50ba18f19c82:14:73341622")
 //  if err != nil {
@@ -24,6 +25,8 @@ func main() {
 //  fmt.Println(len(docs));
 
   http.HandleFunc("/data", foo);
+  http.HandleFunc("/data/scores", scores);
+
   http.HandleFunc("/", http.FileServer(http.Dir("./frontend/dist")).ServeHTTP);
   http.ListenAndServe(":8080", nil)
 
@@ -43,9 +46,29 @@ func foo(w http.ResponseWriter, r *http.Request) {
   w.Header().Set("Content-Type", "application/json")
 }
 
-type Profile struct {
-  Name    string
-  Hobbies []string
+func scores(w http.ResponseWriter, r *http.Request) {
+
+  scores := []score{}
+  s := score{Word:"Hillary", Score:"100"}
+  scores = append(scores,s)
+
+  s1 := score{Word:"Teniis", Score:"80"}
+  scores = append(scores,s1)
+
+  response, err := json.Marshal(scores)
+  fmt.Println(err)
+  fmt.Println(scores)
+  fmt.Println(response)
+
+  w.Write(response)
+
+  w.Header().Set("Content-Type", "application/json")
 }
+
+type score struct{
+  Word string `json:"word"`
+  Score string `json:"score"`
+}
+
 
 
