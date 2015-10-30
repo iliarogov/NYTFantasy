@@ -23,7 +23,7 @@ func main() {
 
   fmt.Println(len(docs));
 
-  http.ListenAndServe(":8080", http.FileServer(http.Dir("/home/ilj/_work_/NYTFantasy/frontend/dist")))
+  http.ListenAndServe(":8080", http.FileServer(http.Dir("./frontend/dist")))
 
   fmt.Println("blah");
 }
