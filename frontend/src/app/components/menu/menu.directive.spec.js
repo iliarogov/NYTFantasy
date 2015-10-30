@@ -6,7 +6,7 @@
    * This example is not perfect.
    * Test should check if MomentJS have been called
    */
-  describe('directive navbar', function() {
+  describe('directive menu', function() {
     // var $window;
     var vm;
     var el;
@@ -14,7 +14,7 @@
 
     beforeEach(module('nytfantasy'));
     beforeEach(inject(function($compile, $rootScope) {
-      el = angular.element('<nyt-navbar></nyt-navbar>');
+      el = angular.element('<nyt-menu></nyt-menu>');
 
       $compile(el)($rootScope.$new());
       $rootScope.$digest();

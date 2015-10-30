@@ -3,17 +3,17 @@
 
   angular
     .module('nytfantasy')
-    .directive('nytNavbar', nytNavbar);
+    .directive('nytMenu', nytMenu);
 
   /** @ngInject */
-  function nytNavbar() {
+  function nytMenu() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/navbar/navbar.html',
+      templateUrl: 'app/components/menu/menu.html',
       scope: {
           creationDate: '='
       },
-      controller: NavbarController,
+      controller: MenuController,
       controllerAs: 'vm',
       bindToController: true
     };
@@ -21,7 +21,7 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
+    function MenuController(moment) {
       var vm = this;
 
       // "vm.creation" is avaible by directive option "bindToController: true"
