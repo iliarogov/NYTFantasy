@@ -21,7 +21,7 @@ CREATE TABLE league (
 
 drop table if exists user_ngram;
 CREATE TABLE user_ngram (
-  user_ngram_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_ngram_id INT(6)  UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   user_id INT(6) NOT NULL REFERENCES user(user_id),
   league_id INT(6) NOT NULL REFERENCES league(league_id),
   ngram_id INT(6) NOT NULL REFERENCES ngram(ngram_id),
