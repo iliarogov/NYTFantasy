@@ -22,4 +22,10 @@ func main() {
   docs := response["docs"].([]interface{});
 
   fmt.Println(len(docs));
+
+  http.ListenAndServe(":8080", http.FileServer(http.Dir("/home/ilj/_work_/NYTFantasy/frontend/dist")))
+
+  fmt.Println("blah");
 }
+
+
