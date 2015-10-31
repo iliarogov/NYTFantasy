@@ -7,7 +7,7 @@
   <div>
     <nyt-menu></nyt-menu>
   </div>
-  
+
   <div class="jumbotron col-sm-9">
       <div class="col-md-4">
         <table class="table">
@@ -16,9 +16,9 @@
                 <th>Word</th>
                 <th>Score</th>
               </tr>
-              <tr ng-repeat="todaysWord in main.todaysWords">
-                  <td class="{{todaysWord.rank}}">{{todaysWord.word}}</td>
-                  <td class="{{todaysWord.rank}}">{{todaysWord.score}}</td>
+              <tr ng-repeat="todaysWord in todaysWords">
+                  <td class="{{todaysWord.$rank}}">{{todaysWord.word}}</td>
+                  <td class="{{todaysWord.$rank}}">{{todaysWord.score}}</td>
               </tr>
             </thead>
         </table>

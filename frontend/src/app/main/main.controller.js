@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -9,26 +9,21 @@
   function MainController($scope, wordEndpoint) {
     var vm = this;
     vm.creationDate = 1446216417264;
-    showtodaycount();
-    
-    function showtodaycount() {
-      getTodayCount();
-    }
-    
-    function getTodayCount(){
-        wordEndpoint().then(function(data){
-            
-        angular.forEach(data, function(todaysWord) {
-            if(todaysWord.score > 500){
-                todaysWord.rank = 'success';
-            }else if(todaysWord.score > 100 && todaysWord.score <= 500){
-                todaysWord.rank = 'info';
-            }else{
-                todaysWord.rank = 'danger';
-            }
-        });
-        })
-    }
-    
+
+    wordEndpoint().then(function (data) {
+
+      $scope.todaysWords = data;
+
+      _.each($scope.todaysWords, function (word) {
+        if (word.score > 500) {
+          word.rank = 'success';
+        } else if (word.score > 100 && word.score <= 500) {
+          word.rank = 'info';
+        } else {
+          word.rank = 'danger';
+        }
+      });
+    })
+
   }
 })();

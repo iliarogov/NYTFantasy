@@ -8,8 +8,10 @@
   /** @ngInject */
   function wordEndpoint($http) {
       return function(){
-        var url = '/scores';
-        return $http.get(url);
+        var url = '/data/scores';
+        return $http.get(url).then(function (response) {
+          return response.data;
+        });
     }
   }
 })();
