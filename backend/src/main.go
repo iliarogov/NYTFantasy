@@ -50,10 +50,16 @@ func scores(w http.ResponseWriter, r *http.Request) {
 
   scores := []score{}
   s := score{Word:"Hillary", Score:"100"}
-  scores = append(scores,s)
+  s1 := score{Word:"Tennis", Score:"80"}
+  s2 := score{Word:"Soccer", Score:"10"}
+  s3 := score{Word:"Donald Trump", Score:"50"}
+  s4 := score{Word:"Tom Cruise", Score:"50"}
 
-  s1 := score{Word:"Teniis", Score:"80"}
+  scores = append(scores,s)
   scores = append(scores,s1)
+  scores = append(scores,s2)
+  scores = append(scores,s3)
+  scores = append(scores,s4)
 
   response, err := json.Marshal(scores)
   fmt.Println(err)
